@@ -51,3 +51,4 @@ htmlContent:'false'<BR>
 consoleLog:'false'<BR>
 outputMode:'file'<BR>
 fileName:'exportData'<BR>
+worksheetName:'yourWorksheetName'<BR>
