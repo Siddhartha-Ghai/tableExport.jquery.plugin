@@ -429,6 +429,7 @@ THE SOFTWARE.*/
 
 				function downloadFile(filename, data){
 					var DownloadLink = document.createElement('a');
+					document.body.appendChild(DownloadLink);
 
 					if ( DownloadLink ){
 						DownloadLink.style = 'display: none';
