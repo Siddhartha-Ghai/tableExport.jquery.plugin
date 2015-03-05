@@ -38,10 +38,11 @@ THE SOFTWARE.*/
 						htmlContent:'false',
 						consoleLog:'false',
 						outputMode:'file',  // file|string|base64
-						fileName:'exportData'
+						fileName:'exportData',
+						excelstyles: [ 'border-bottom', 'border-top', 'border-left', 'border-right' ]
 				};
 
-				var options = $.extend(defaults, options);
+				var options = $.extend(true, defaults, options);
 				var el = this;
 				var DownloadEvt = null;
 				
@@ -260,7 +261,13 @@ THE SOFTWARE.*/
 						$(this).filter(':visible').find('th').each(function(index,data) {
 							if ($(this).css('display') != 'none'){
 								if(defaults.ignoreColumn.indexOf(index) == -1){
-									excel += "<td>" + parseString(this, rowIndex, index)+ "</td>";
+									excel += "<td style='";
+									for( var styles in defaults.excelstyles ) {
+										if( defaults.excelstyles.hasOwnProperty(styles) ) {
+											excel += defaults.excelstyles[styles] + ": " + $(this).css(defaults.excelstyles[styles]) + ";";
+										}
+									}
+									excel += "'>" + parseString(this, rowIndex, index)+ "</td>";
 								}
 							}
 						});
@@ -276,7 +283,13 @@ THE SOFTWARE.*/
 						$(this).filter(':visible').find('td').each(function(index,data) {
 							if ($(this).css('display') != 'none'){
 								if(defaults.ignoreColumn.indexOf(index) == -1){
-									excel += "<td>"+parseString(this, rowIndex, index)+"</td>";
+									excel += "<td style='";
+									for( var styles in defaults.excelstyles ) {
+										if( defaults.excelstyles.hasOwnProperty(styles) ) {
+											excel += defaults.excelstyles[styles] + ": " + $(this).css(defaults.excelstyles[styles]) + ";";
+										}
+									}
+									excel += "'>" + parseString(this, rowIndex, index) + "</td>";
 								}
 							}
 							colCount++;

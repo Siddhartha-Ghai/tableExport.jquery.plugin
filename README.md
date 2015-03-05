@@ -52,3 +52,4 @@ consoleLog:'false'<BR>
 outputMode:'file'<BR>
 fileName:'exportData'<BR>
 worksheetName:'yourWorksheetName'<BR>
+excelstyles:['css','properties','to','export','to','excel']<BR>
